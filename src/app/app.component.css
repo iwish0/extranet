@@ -2,26 +2,8 @@
 	background-color: #edeff1;
 	padding-bottom: 20px;
 }
-
 #searchMenu .dropdown{
 	margin:10px;
-}
-/*#searchMenu .btn-default{
-    
-    color:#333333;
-    border-color:#00bfff ;
-}*/
-#searchMenu .btn-default:hover{
-    
-    color:#ffffff;
-      background-color:#31B0D5 ;
-    border-color:#00bfff ;
-}
-#searchMenu .btn-default:focus{
-    
-    color:#ffffff;
-      background-color:#00bfff ;
-    border-color:#00bfff ;
 }
 #close-icon-row{
 	position:relative;
@@ -29,10 +11,8 @@
 }
 #close-icon-row>h3{
 	color:#555555;
-	
 }
-#close-icon-row>span{
-	
+#close-icon-row>span{	
 	position:absolute;
 	right:20px;
 	top:20px;

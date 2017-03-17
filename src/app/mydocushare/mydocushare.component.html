@@ -1,0 +1,303 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>Mon DocuShare</h3>
+			<p>Votre page d'accueil DocuShare personnelle</p>
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+						  		<div class="panel-heading">
+									<div class="row">
+						  				<div class="col-sm-4">
+						    				<h3 class="panel-title">Espace de travail</h3>
+						    			</div>
+						    			<div class="col-sm-offset-4 col-sm-4">
+						    				<div class="dropdown">
+										        <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										          Ce que je peux afficher
+										          <span class="caret"></span>
+										        </button>
+										        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+										          <li><a>test</a></li>
+										        </ul>
+											</div>
+										</div>
+									</div>
+									<div class="row row-icons">
+										<div>
+											<span>(Page 1 sur 1)</span>		
+										</div>
+										<div>
+											<div class="icon-circle">
+												<span class="glyphicon 
+											glyphicon-chevron-left"></span>
+											</div>
+											<div class="icon-circle">
+												<span class="glyphicon glyphicon-chevron-right"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+						  		<div class="panel-body">
+						  			<div id="workspaceIconBlock">
+						    			<span class="glyphicon glyphicon-th"></span> Ajouter un espace de travail
+						    		</div>
+						    		<div>
+							    		<table class="table table-responsive">
+	  										<tr>
+	  											<th>Type</th>
+	  											<th>Titre</th>
+	  											<th>Propriétaire</th>
+	  											<th>Date de modification</th>
+							    				<th>Taille</th>
+							    				<th>Actions</th>
+	  										</tr>
+	  										
+	  									</table>
+						    		</div>
+						  		</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+						  		<div class="panel-heading">
+									<div class="row">
+						  				<div class="col-sm-4">
+						    				<h3 class="panel-title">Site Accueil</h3>
+						    				<p>Affiche le contenu de niveau supérieur</p>
+						    			</div>
+									</div>
+									<div class="row row-icons">
+										<div>
+											<span>(Page 1 sur 1)</span>		
+										</div>
+										<div>
+											<div class="icon-circle">
+												<span class="glyphicon 
+											glyphicon-chevron-left"></span>
+											</div>
+											<div class="icon-circle">
+												<span class="glyphicon glyphicon-chevron-right"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+						  		<div class="panel-body">
+						    		<div>
+							    		<table class="table table-responsive">
+	  										<tr>
+	  											<th>Type</th>
+	  											<th>Titre</th>
+	  											<th>Propriétaire</th>
+	  											<th>Date de modification</th>
+							    				<th>Taille</th>
+							    				<th>Actions</th>
+	  										</tr>
+	  										<tr *ngFor="let item of collections;let i=index">
+	  											<td><span class="glyphicon glyphicon-folder-open"></span></td>
+	  											<td>admin</td>
+	  											<td><a href="#">{{item}}</a></td>
+	  											<td>14/07/2015</td>
+	  											<td>0</td>
+	  											<td>
+	  												<div>
+	  													<span class="glyphicon glyphicon-option-horizontal" (click)="onClickSubMenu(i)"></span>
+	  												</div>
+	  												<div class="optionHorizontalMenu" *ngIf="subMenu && index==i">
+														<ul class="list-unstyled">
+															<li>Propriétés<span class="glyphicon glyphicon-list-alt"></span></li>
+															<li>Ajouter au favoris<span class="glyphicon glyphicon-star-empty"></span></li>
+															<li>Notifications<span class="glyphicon glyphicon-bell"></span></li>
+															<li>Règles de contenu<span class="glyphicon glyphicon-cog"></span></li>
+														</ul>
+													</div>
+	  											</td>
+	  										</tr>
+	  									</table>
+						    		</div>
+						  		</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="calendrier">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+						  		<div class="panel-heading">
+									<div class="row">
+						  				<div class="col-sm-4">
+						    				<h3 class="panel-title">Calendriers favoris</h3>
+						    			</div>
+									</div>
+									<div class="row text-center">
+										<div class="col-sm-4">
+											<div class="dropdown">
+										        <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										          Afficher
+										          <span class="caret"></span>
+										        </button>
+										        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+										          <li><a>Vue d'une semaine</a></li>
+										           <li><a>Vue d'un jour</a></li>
+										        </ul>
+											</div>	
+										</div>
+										<div class="col-sm-4" id="date">
+											<span>13/03/2017</span>		
+										</div>
+										<div class="col-sm-4" >
+											<div class="icon-circle-bis">
+												<span class="glyphicon 
+											glyphicon-chevron-left"></span>
+											</div>
+											<div class="icon-circle-bis">
+												<span class="glyphicon glyphicon-chevron-right"></span>
+											</div>
+										</div>
+									</div>			
+								</div>
+						  		<div class="panel-body">
+						    		<div>
+							    		<table class="table table-responsive">
+	  										
+	  									</table>
+						    		</div>
+						  		</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+						  		<div class="panel-heading">
+									<div class="row">
+						  				<div class="col-sm-4">
+						    				<h3 class="panel-title">Corbeille personnelle</h3>
+						    			</div>
+									</div>
+									<div class="row text-center">
+										<div class="col-sm-4">
+											<div class="dropdown">
+										        <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										          Afficher
+										          <span class="caret"></span>
+										        </button>
+										        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+										          <li *ngFor="let item of displayOption"><a>{{item}}</a></li>
+										          
+										        </ul>
+											</div>	
+										</div>
+										<div class="col-sm-4">
+											<div class="dropdown">
+										        <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										          Modifier la sélection
+										          <span class="caret"></span>
+										        </button>
+										        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+										          <li><a>Effacer</a></li>
+										          <li><a>Restaurer</a></li>
+										        </ul>
+											</div>	
+										</div>
+									</div>			
+								</div>
+						  		<div class="panel-body">
+						    		<div>
+							    		<table class="table table-responsive">
+	  										
+	  									</table>
+						    		</div>
+						  		</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+						  		<div class="panel-heading">
+									<div class="row">
+						  				<div class="col-sm-4">
+						    				<h3 class="panel-title">Favoris</h3>
+						    			</div>
+						    			<div class="col-sm-4">
+											<div class="dropdown">
+										        <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										          Afficher
+										          <span class="caret"></span>
+										        </button>
+										        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+										          <li *ngFor="let item of displayOption"><a>{{item}}</a></li>  
+										        </ul>
+											</div>	
+										</div>
+									</div>
+									<div class="row row-icons">
+										<div>
+											<span>(Page 1 sur 1)</span>		
+										</div>
+										<div>
+											<div class="icon-circle">
+												<span class="glyphicon 
+											glyphicon-chevron-left"></span>
+											</div>
+											<div class="icon-circle">
+												<span class="glyphicon glyphicon-chevron-right"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+						  		<div class="panel-body">
+						  			<div>
+						    			
+						    		</div>
+						  		</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+						  		<div class="panel-heading">
+									<div class="row">
+						  				<div class="col-sm-4">
+						    				<h3 class="panel-title">Mes groupes</h3>
+						    			</div>
+									</div>
+									<div class="row row-icons">
+										<div>
+											<span>(Page 1 sur 1)</span>		
+										</div>
+										<div>
+											<div class="icon-circle">
+												<span class="glyphicon 
+											glyphicon-chevron-left"></span>
+											</div>
+											<div class="icon-circle">
+												<span class="glyphicon glyphicon-chevron-right"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+						  		<div class="panel-body">
+						  		</div>
+						  		<ul class="list-group">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+							</div>
+						</div>
+					</div>
+				</div>			
+			</div>
+		</div>
+	</div>
+</div>

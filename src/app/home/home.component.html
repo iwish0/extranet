@@ -62,7 +62,7 @@
 				<div class="col-xs-10">
 					<h3>COLLECTIONS</h3>
 					<p>Collections de niveau supérieurs</p>
-					<div><ul class="list-unstyled"><li *ngFor="let collection of collections" class="home_items"><span class="glyphicon glyphicon-folder-open home_second_icons"></span><a [routerLink]="['/collection',{url:collection}]">{{collection}}</a></li></ul></div>
+					<div><ul class="list-unstyled"><li *ngFor="let collection of collections" class="home_items"><span class="glyphicon glyphicon-folder-open home_second_icons"></span><a [routerLink]="['/collection',{type:collection}]">{{collection}}</a></li></ul></div>
 				</div>
 				<div class="col-xs-2">
 					<span class="glyphicon glyphicon-th-list home_main_icons"></span>
@@ -87,23 +87,24 @@
 					<span class="glyphicon glyphicon-link home_main_icons"></span>
 				</div>
 			</div>		
-		</div>
-		<div class="col-sm-6 col-md-4 home_main_div2">
-			<div clas="row">
-				<div class="col-xs-10">
-					<h3>AUTRES LIENS</h3>
-					<p>Liens vers un autres contenu</p>
-					<div>
-						<ul class="list-unstyled">
-							<li class="home_items">
-								<span class="glyphicon glyphicon-home home_second_icons"></span>Mon DocuShare<br />
-								<small>Votre page d'accueil DocuShare personnalisée</small>
-							</li>
-						</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 home_main_div2">
+				<div clas="row">
+					<div class="col-xs-10">
+						<h3>NOUVEAUTÉS</h3>
+						<p>Présente tout le contenu modifié. Voyez les nouveautés du jour!</p>
+						<div class="dropdown" id="news">
+						  <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    Période
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu7">
+						    <li *ngFor="let item of news"><a href="#">{{item}}</a></li>   
+						  </ul>
 					</div>
 				</div>
 				<div class="col-xs-2">
-					<span class="glyphicon glyphicon-link home_main_icons"></span>
+					<span class="glyphicon glyphicon-bell home_main_icons"></span>
 				</div>
 			</div>		
 		</div>

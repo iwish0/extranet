@@ -11,27 +11,12 @@ import {WebStorageService} from "../web-storage.service";
 export class LoginComponent {
   message: string;
   constructor(public authService: AuthService,public webstorage:WebStorageService, public router: Router) {
-    // this.setMessage();
+  
   }
-  // setMessage() {
-  //   this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  // }
-  // login() {
-  //   this.message = 'Trying to log in ...';
-  //   this.authService.login().subscribe(() => {
-  //     this.setMessage();
-  //     if (this.authService.isLoggedIn) {
-  //       // Get the redirect URL from our auth service
-  //       // If no redirect has been set, use the default
-  //       let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/crisis-center/admin';
-  //       // Redirect the user
-  //       this.router.navigate([redirect]);
-  //     }
-  //   });
-  // }
+  
   login(form:NgForm){
 
-    // this.authService.login(form);
+   
     if(this.authService.login(form)){
        this.router.navigate(['/home']);
        // console.log("Redirection!");

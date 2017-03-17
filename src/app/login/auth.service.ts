@@ -20,7 +20,7 @@ export class AuthService {
           this.storage.store('password',form.value.password);
           this.storage.store('rememberMe',form.value.rememberMe);
         }else{
-           this.storage.clear('authid');
+          this.storage.clear('authid');
           this.storage.clear('password');
           this.storage.clear('rememberMe');
         }

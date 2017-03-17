@@ -17,5 +17,20 @@ footer{
 	width: 100%;
 	padding-top:13px;
 
-	
 }
+div.dropdown>.btn-default.dropdown-toggle:hover{
+    color:#ffffff;
+    background-color:#31B0D5 ;
+    border-color:#00bfff ;
+}
+div.dropdown>.btn-default.dropdown-toggle:focus{
+    color:#ffffff;
+	background-color:#00bfff ;
+    border-color:#00bfff ;
+}
+div.dropdown>.btn-default.dropdown-toggle:active{
+    color:#ffffff;
+	background-color:#00bfff ;
+    border-color:#00bfff ;
+}
+

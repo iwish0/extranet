@@ -1,18 +1,78 @@
 <div class="container-fluid">
-	<div id="titleBlock">
-		<h3 class="h4">
-			<span class="glyphicon glyphicon-folder-open"></span> {{url}}
-		</h3>
-		<div id="subMenuBlock" (click)="onClickSubMenu()">
-			<span class="glyphicon glyphicon-option-horizontal"></span>
+	<div class="row">
+		<div id="titleBlock">
+			<h3 class="h4">
+				<span class="glyphicon glyphicon-folder-open"></span> {{type}}
+			</h3>
+			<div id="subMenuBlock" (click)="onClickSubMenu()">
+				<span class="glyphicon glyphicon-option-horizontal"></span>
+			</div>
+			<div *ngIf="subMenu1">
+				<ul class="list-unstyled">
+					<li>Propriétés<span class="glyphicon glyphicon-list-alt"></span></li>
+					<li>Ajouter au favoris<span class="glyphicon glyphicon-star-empty"></span></li>
+					<li>Supprimer Collection<span class="glyphicon glyphicon-trash"></span></li>
+					<li>Droits d'accès<span class="glyphicon glyphicon-lock"></span></li>
+					<li>Notifications<span class="glyphicon glyphicon-bell"></span></li>
+					<li>Règles de contenu<span class="glyphicon glyphicon-cog"></span></li>
+					<li>Page de couverture de numérisation<span class="glyphicon glyphicon-file"></span></li>
+				</ul>
+			</div>
 		</div>
-		<div *ngIf="subMenu1">
-			<ul class="list-unstyled">
-				<li>Propriétés<span class="glyphicon glyphicon-list-alt"></span></li>
-				<li>Supprimer Collection<span class="glyphicon glyphicon-trash"></span></li>
-				<li>Droits d'accès<span class="glyphicon glyphicon-lock"></span></li>
-				<li>Page de couverture de numérisation<span class="glyphicon glyphicon-file"></span></li>
+	</div>
+</div>
+<div class="container-fluid" id="second-container">
+	<div class="row">
+		<div class="dropdown" id="dropdownModification">
+		  	<button class="btn btn-default btn-block dropdown-toggle" type="button" id="modification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Modifier la sélection
+		    	<span class="caret"></span>
+		  	</button>
+		  	<ul class="dropdown-menu" aria-labelledby="modification">
+		    	<li *ngFor="let item of modifications">
+		    		<a href="#">{{item}}</a>
+		    	</li>
+		  	</ul>
+		</div>
+		<div class="dropdown" id="dropdownAddList">
+		  	<button class="btn btn-default btn-block dropdown-toggle" type="button" id="addList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Ajouter...
+		    	<span class="caret"></span>
+		  	</button>
+		  	<ul class="dropdown-menu" aria-labelledby="addList">
+		    	<li *ngFor="let item of addList">
+		    		<a [routerLink]="item.url" [queryParams]="{collection:type}">{{item.name}}</a>
+		    	</li>
+		  	</ul>
+		</div>
+		<div id="rightIconsList">
+			<div>
+			 	<ul class="list-inline">
+					<li data-toggle="tooltip" data-placement="bottom" title="Actualiser">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</li>
+					<li data-toggle="tooltip" data-placement="bottom" title="Afficher la liste">
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</li>
+					<li data-toggle="tooltip" data-placement="bottom" title="Afficher les messages électroniques">
+						<span class="glyphicon glyphicon-envelope"></span></li>
+					<li data-toggle="tooltip" data-placement="bottom" title="Modifier les options d'affichage">
+						<span class="glyphicon glyphicon-object-align-horizontal"></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="third-container">
+	<div class="row">
+		<div class="text-center" style="margin-top:150px;">
+			Aucune collection pour le moment!
+			<ul>
+			<li *ngFor="let collection of collections">{{collection.name}}</li>
+
 			</ul>
 		</div>
 	</div>
 </div>
+		

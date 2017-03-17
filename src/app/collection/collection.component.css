@@ -1,6 +1,7 @@
 #titleBlock{
 	position:relative;
 	padding:20px;
+	border:1px solid #dddddd;
 }
 #titleBlock>h3{
 	display:inline;
@@ -24,21 +25,63 @@
 	top:45px;
 	border:1px solid #dddddd;
 	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+	z-index: 999;
 }
 #titleBlock>div:nth-child(3)>ul{
 	padding:12px;
-	width:210px;
+	width:220px;
+	background-color: #ffffff;
+
 }
 #titleBlock>div:nth-child(3)>ul>li{
-	
 	margin:16px 0 16px 0;
 	position: relative;
 	font-size:15px;
+	padding: 5px;
+	cursor:pointer;
+}
+#titleBlock>div:nth-child(3)>ul>li:hover{
+	color:#31B0D5;
 }
 #titleBlock>div:nth-child(3)>ul>li>span{
-	
 	position: absolute;
 	right:5px;
 	font-size:18px;
 	color:#6d7277;
+}
+#second-container{
+	background-color:#EDEFF1;
+	height:50px;
+}
+#rightIconsList{
+	position:relative;
+}
+#rightIconsList>div{
+	position:absolute;
+	right:5px;
+}
+#rightIconsList>div>ul>li{
+	padding:10px;
+	font-size: 21px;
+	cursor: pointer;
+}
+#rightIconsList>div>ul>li>span.glyphicon{
+	color:#B8BDC3;
+	
+}
+#third-container>.row{
+	height: 500px;
+	border-left: 15px solid #EDEFF1;
+	border-right: 15px solid #EDEFF1;
+	border-bottom: 15px solid #EDEFF1;
+}
+#dropdownModification{
+	position:absolute;
+	left:15px;
+	margin-top:7px;
+}
+#dropdownAddList{
+	position:absolute;
+	left:190px;
+	margin-top:7px;
 }
