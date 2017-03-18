@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import {AuthService} from './login/auth.service';
 import{WebStorageService} from './web-storage.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,22 @@ import{WebStorageService} from './web-storage.service';
   styleUrls: ['./app.component.css']
 
 })
-export class AppComponent {
-	constructor(public authservice:AuthService,public webstorage:WebStorageService){
+export class AppComponent implements OnInit {
+	
+  constructor(private router: Router,public authservice:AuthService,public webstorage:WebStorageService){
 		console.log(this.webstorage.isLoggedIn+ "from app.component");
 	}
 
-	logout(){
+  ngOnInit(){
+     this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            window.scrollTo(0, 0)
+        });
+  }
+
+  logout(){
 		this.searchMenu=false;
 		this.authservice.logout();
 	}

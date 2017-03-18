@@ -1,6 +1,6 @@
 import{Component,OnInit} from '@angular/core';
 import{Router,ActivatedRoute,Params} from '@angular/router';
-import{FormGroup,FormControl,FormBuilder} from '@angular/forms';
+import{FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import{CollectionService} from './collection.service';
 
@@ -25,7 +25,7 @@ export class AddDocumentFormComponent implements OnInit{
        
     };
  	
-
+    public file;
 
 
  	 onDateChanged(event: IMyDateModel) {
@@ -40,20 +40,27 @@ export class AddDocumentFormComponent implements OnInit{
         console.log(this.collection);
       });
 
+
+
  		this.formGroupDocument= this._fb.group({
-      collection:this.collection, 
-   		title:'',
+      collection:this.collection,
+      file:['',Validators.required],
+   		title:['',Validators.required],
    		summary:'',
       description:'',
       keywords:'',
       expirationDate:'',
-      versionsMax:'4',
-      file:'' 
+      versionsMax:['4',Validators.required],
+      auteur:'',
+      accessRights:'same',
+      circulation:'false'
+       
   	})
   }
 
   onAddDocumentSubmit(){
     this._collectionService.addDocument(this.formGroupDocument.value);
+    console.log(this.formGroupDocument);
     console.log(this.formGroupDocument.value);
     console.log(this.formGroupDocument.value.collection);
   }

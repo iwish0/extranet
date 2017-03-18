@@ -7,11 +7,35 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-offset-2 col-sm-8">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
       <form class="form-horizontal" (ngSubmit)="onAddDocumentSubmit()" [formGroup]="formGroupDocument">
           <div class="infoRequired">Les champs marqués d'un astérisque sont requis.
           </div>
           <hr/>
+      
+           <div class="form-group">
+            <div class="col-sm-2 control-label mockLabel">
+             <!-- popover -->
+              <div>
+                <popover-content #myPopover7
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Fichier</b> 
+                    <p>Nombre maximum de versions pouvant être enregistrées.</p><p>Lors de l'ajout d'une nouvelle version d'un document dans DocuShare, la version la plus ancienne est supprimée.</p>
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover7"  popoverPlacement="right"></span> Fichier <span class="asterisque" [hidden]="formGroupDocument.controls.file.valid">*</span>
+              </div>
+              <!-- end popover -->
+            </div>
+            <div class="col-sm-10">
+              <label for="file" id="inputFileButton">Votre fichier</label>
+              <input id="file" type="file" formControlName="file" class="inputfile form-control"><span id="fileName">{{formGroupDocument.value.file}}</span>
+            </div>
+          </div>
+
+
 
           <div class="form-group">
             <label for="title" class="col-sm-2 control-label">
@@ -25,12 +49,12 @@
                     <p>Titre de l'objet. Le titre doit être court mais descriptif.</p><p>Il peut contenir des espaces et des signes de ponctuations.</p>
                   </div>
                 </popover-content>
-                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover"  popoverPlacement="right"></span> Titre *
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover"  popoverPlacement="right"></span> Titre  <span class="asterisque" [hidden]="formGroupDocument.controls.title.valid">*</span>
               </div>
               <!-- end popover -->
             </label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="title" formControlName="title">
+              <input type="text" class="form-control" id="title" formControlName="title" [ngModel]="formGroupDocument.value.file">
             </div>
           </div>
 
@@ -120,15 +144,11 @@
               </div>
               <!-- end popover -->
               </label>
-            <div class="col-sm-10">
+            <div class="col-sm-4">
               <my-date-picker [options]="myDatePickerOptions" [locale]="jap" 
                 (dateChanged)="onDateChanged($event)" formControlName="expirationDate"></my-date-picker>
             </div>
-          </div>
-
-
-            <div class="form-group">
-            <label for="versionsMax" class="col-sm-2 control-label">
+             <label for="versionsMax" class="col-sm-2 control-label">
               <!-- popover -->
               <div>
                 <popover-content #myPopover6
@@ -139,45 +159,119 @@
                     <p>Nombre maximum de versions pouvant être enregistrées.</p><p>Lors de l'ajout d'une nouvelle version d'un document dans DocuShare, la version la plus ancienne est supprimée.</p>
                   </div>
                 </popover-content>
-                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover6"  popoverPlacement="right"></span> Version max *
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover6"  popoverPlacement="right"></span> Version max <span class="asterisque" [hidden]="formGroupDocument.controls.versionsMax.valid">*</span>
               </div>
               <!-- end popover -->
             </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="versionsMax" formControlName="versionsMax">
+            </div>
+          </div>
+          
+          
+           <div class="form-group">
+            <label for="auteur" class="col-sm-2 control-label">
+              <!-- popover -->
+                <div>
+                  <popover-content #myPopover8
+                    title="Aide"
+                    [closeOnClickOutside]="true">
+                    <div class="popOverStyle">
+                      <b>Auteur</b> 
+                      <p>Auteur(s) du document.</p>
+                      <p>L'auteur peut être différent du propriétaire.</p> 
+                    </div>
+                  </popover-content>
+                  <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover8"  popoverPlacement="right"></span> Auteur
+                </div>
+                <!-- end popover -->
+            </label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="versionsMax" formControlName="versionsMax" value="4">
+              <input type="text" class="form-control" formControlName="auteur" id="auteur" />
             </div>
           </div>
 
 
           <div class="form-group">
-            <label for="file" class="col-sm-2 control-label">
+            <div class="col-sm-2 control-label mockLabel">
              <!-- popover -->
               <div>
-                <popover-content #myPopover7
+                <popover-content #myPopover9
                   title="Aide" 
                   [closeOnClickOutside]="true">
                   <div class="popOverStyle">
-                    <b>FIchier</b> 
-                    <p>Nombre maximum de versions pouvant être enregistrées.</p><p>Lors de l'ajout d'une nouvelle version d'un document dans DocuShare, la version la plus ancienne est supprimée.</p>
+                    <b>Droits d'accès initiaux</b> 
+                    <p>Droits d’accès attribués au nouvel objet :</p>
+                    <ul>
+                        <li><b>Identiques au contenant:</b>  Attribue à l’objet les droits d’accès du contenant.</li>
+                      <li><b>Identiques au contenant sauf droits Rédacteur réservés au propriétaire:</b>  Attribue les droits de Lecteur aux utilisateurs qui ont ces droits sur le contenant. Vous êtes le seul utilisateur disposant des droits d’accès Rédacteur à l’objet.</li>
+                      <li><b>Réservés au propriétaire:</b> Attribue les droits d’accès complets uniquement à vous, le propriétaire de l’objet. </li>
+                    </ul>
                   </div>
                 </popover-content>
-                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover7"  popoverPlacement="right"></span> File *
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover9"  popoverPlacement="right"></span> Droits d'accès initiaux              
               </div>
               <!-- end popover -->
-            </label>
-        <div>
-        <input id="file" type="file" formControlName="file">
-          </div>
+            </div>
+            <div class="col-sm-10">
+              <div class="radio">
+                 <label class="radio"><input type="radio"   value="same" formControlName="accessRights"><span class="outer"><span class="inner"></span></span>Identiques au contenant</label>
+              </div>
+              <div class="radio">
+                 <label class="radio"><input  type="radio"  value="different"  formControlName="accessRights"  ><span class="outer"><span class="inner"></span></span>Identiques au contenant sauf droits Rédacteur réservés au propriétaire</label>
+              </div>
+              <div class="radio">
+                 <label class="radio"><input   type="radio" value="owner" formControlName="accessRights" ><span class="outer"><span class="inner"></span></span>Réserver au propriétaire</label>
+              </div>
+            </div>
         </div>
 
 
+        <div class="form-group">
+            <div class="col-sm-2 control-label mockLabel">
+             <!-- popover -->
+              <div>
+                <popover-content #myPopover10
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Circulation du document</b> 
+                    <p>Précise si le document doit circuler ou non lors de son ajout dans la collection.</p>
+                    <ul>
+                        <li><b> Ne pas faire circuler le document:</b> Ajoute le document à la collection sans le faire circuler.</li>
+                      <li><b>  Faire circuler le document et le publier plus tard: </b> Affiche une fiche de circulation afin que vous puissiez faire circuler le document à d'autres utilisateurs avant de l'ajouter à la collection.</li>
+                      <li><b>  Publier puis faire circuler le document: </b> Ajoute le document à la collection, puis affiche une fiche de circulation vous permettant de faire circuler le document à d'autres utilisateurs.</li>
+                    </ul>
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover10"  popoverPlacement="right"></span> Circulation du document             
+              </div>
+              <!-- end popover -->
+            </div>
+            <div class="col-sm-10">
+              <div class="radio">
+                 <label class="radio"><input type="radio" value="false" formControlName="circulation"><span class="outer"><span class="inner"></span></span>Ne pas faire circuler le document</label>
+              </div>
+              <div class="radio">
+                 <label class="radio"><input type="radio" value="true"  formControlName="circulation"><span class="outer"><span class="inner"></span></span>Faire circuler le document et le publier plus tard</label>
+              </div>
+              <div class="radio">
+                 <label class="radio"><input type="radio" value="later" formControlName="circulation" ><span class="outer"><span class="inner"></span></span>Publier puis faire circuler le document</label>
+              </div>
+            </div>
+        </div>
+        
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button class="btn btn-info btn-lg">Valider</button>
+              <button [disabled]="!formGroupDocument.valid" class="btn btn-info btn-lg">Valider</button>
             </div>
           </div>
         </form>
     </div>
  </div>
 </div>
+
+
 <div>{{ formGroupDocument.value | json }}</div>
+
+<div>{{ formGroupDocument.status}}</div>

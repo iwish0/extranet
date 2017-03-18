@@ -38,7 +38,7 @@
         <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span></button>
       </form>
       <ul *ngIf="webstorage.isLoggedIn" class="nav navbar-nav navbar-right">
-        <li [class.searchMenuLink]="searchMenu" (click)="onClickSearMenuLink()"><a routerLink=""><span class="glyphicon glyphicon-cog"></span></a></li>  
+        <li [class.searchMenuLink]="searchMenu" (click)="onClickSearMenuLink()"><a routerLink="#"><span class="glyphicon glyphicon-cog"></span></a></li>  
         <li (click)="logout()"><a routerLink="/login"><span class="glyphicon glyphicon-user"></span></a></li>
         <li (click)="logout()"><a routerLink="/login"><span class="glyphicon glyphicon-off"></span></a></li>
         <!-- <li class="dropdown">
@@ -61,7 +61,7 @@
   </div>
   <div class="row">
 
-    <div class="col-sm-2">
+    <div class="col-sm-4 col-md-4 col-lg-3">
       <div class="dropdown">
         <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Rechercher les mots dans
@@ -72,7 +72,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-4 col-md-4 col-lg-3">
       <div class="dropdown">
         <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Types d'objets
@@ -83,7 +83,7 @@
         </ul>
       </div>
     </div>
-     <div class="col-sm-2">
+     <div class="col-sm-4 col-md-4 col-lg-3">
       <div class="dropdown">
         <button class="btn btn-default  btn-block dropdown-toggle" type="button" id="dropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Nombre max. de résultats
@@ -96,7 +96,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-4 col-md-4 col-lg-3">
       <div class="dropdown">
         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdown4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Dernière modification
@@ -107,7 +107,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-4 col-md-4 col-lg-3">
       <div class="dropdown">
         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdown5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Types de document
@@ -118,7 +118,7 @@
         </ul>
       </div>
     </div>
-     <div class="col-sm-2">
+     <div class="col-sm-4 col-md-4 col-lg-3">
       <div class="dropdown">
         <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdown6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Trier les résultats
