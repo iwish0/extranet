@@ -18,6 +18,7 @@ export class CollectionComponent implements OnInit {
   subMenu1:boolean=false;
   private errorMessage:string;
   private collections:Collection[];
+  private addition:number;
 
   ngOnInit() {
   	// subscribe to router event
@@ -26,17 +27,27 @@ export class CollectionComponent implements OnInit {
         console.log(this.type+ "sfsfd");
       });
 
-      this.getData();
+      this.getWSRest();
+      this.getWSSoap();
   }
 
-    getData() {
+  getWSRest() {
     this.collectionService.getData()
-                     .subscribe(
-                        result=> this.collections = result,
-                       error =>  this.errorMessage = <any>error);
-                     console.log(this.errorMessage);
+             .subscribe(
+                result=> this.collections = result,
+                error =>  this.errorMessage = <any>error
+             );
+                console.log(this.errorMessage);
   }
 
+  getWSSoap(){
+    this.collectionService.getXmlBySoap()
+               .subscribe(
+                  result=> this.addition=result,
+                  error =>  this.errorMessage = <any>error
+                );
+               console.log(this.errorMessage);
+  }
 
   onClickSubMenu(){
   	this.subMenu1=!this.subMenu1;
@@ -67,7 +78,7 @@ export class CollectionComponent implements OnInit {
        url:''
      },{
        name: 'Discussion',
-        url:''
+        url:'/collection/add-discussion'
      },{
        name:  'Document',
         url:'/collection/add-document'

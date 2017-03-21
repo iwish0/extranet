@@ -20,12 +20,15 @@
     "@angular/platform-browser": "^2.4.0",
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
+    "@types/soap": "0.0.33",
+    "@types/xml2js": "0.0.33",
     "core-js": "^2.4.1",
     "mydatepicker": "^1.7.7",
     "ng2-popover": "0.0.14",
     "ng2-webstorage": "^1.5.0",
     "rxjs": "^5.1.0",
     "typings": "^2.1.0",
+    "xml2js": "^0.4.17",
     "zone.js": "^0.7.6"
   },
   "devDependencies": {

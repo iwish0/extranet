@@ -4,31 +4,22 @@ import{FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import{CollectionService} from './collection.service';
 
-
 @Component({
   templateUrl:'./add-document-form.html',
   styleUrls:['./forms.css']
 
 })
-
 export class AddDocumentFormComponent implements OnInit{
 	
 	private formGroupDocument:FormGroup;
 	private FormControl:FormControl;
-	
-
 	private collection:String;
-	 private myDatePickerOptions: IMyOptions = {
-        // other options...
-        dateFormat: 'dd-mm-yyyy'
+	private myDatePickerOptions: IMyOptions = {
+          dateFormat: 'dd-mm-yyyy'
+  };
+ 	public file;
 
-       
-    };
- 	
-    public file;
-
-
- 	 onDateChanged(event: IMyDateModel) {
+  onDateChanged(event: IMyDateModel) {
         // event properties are: event.date, event.jsdate, event.formatted and event.epoc
     }
 
@@ -38,11 +29,9 @@ export class AddDocumentFormComponent implements OnInit{
  		this.activatedRoute.queryParams.subscribe((params: Params) => {
         this.collection = params['collection'];
         console.log(this.collection);
-      });
+    });
 
-
-
- 		this.formGroupDocument= this._fb.group({
+   this.formGroupDocument= this._fb.group({
       collection:this.collection,
       file:['',Validators.required],
    		title:['',Validators.required],
@@ -53,8 +42,7 @@ export class AddDocumentFormComponent implements OnInit{
       versionsMax:['4',Validators.required],
       auteur:'',
       accessRights:'same',
-      circulation:'false'
-       
+      circulation:'false'    
   	})
   }
 
@@ -64,5 +52,4 @@ export class AddDocumentFormComponent implements OnInit{
     console.log(this.formGroupDocument.value);
     console.log(this.formGroupDocument.value.collection);
   }
-
- }
+}

@@ -9,19 +9,19 @@ import { MyDatePickerModule } from 'mydatepicker';
 
 import{CollectionComponent} from './collection.component';
 import{AddDocumentFormComponent} from './add-document-form.component';
+import{AddDiscussionFormComponent} from './add-discussion-form.component';
 
 import{CollectionService} from './collection.service';
 
 import{CollectionRoutingModule} from './collection-routing.module';
 
-
-
 @NgModule({
    declarations: [
-     CollectionComponent,AddDocumentFormComponent
+     CollectionComponent,
+     AddDocumentFormComponent,
+     AddDiscussionFormComponent
    ],
    imports: [
- 
      FormsModule,
      HttpModule,
      RouterModule,
@@ -34,7 +34,5 @@ import{CollectionRoutingModule} from './collection-routing.module';
    providers:[CollectionService]
 
  })
-
- export class CollectionModule{
-
-}
+ 
+export class CollectionModule{}

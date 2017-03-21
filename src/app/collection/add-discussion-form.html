@@ -1,0 +1,155 @@
+<div class="container-fluid" id="mainContainerForm">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <span class="bold">Ajout d'une discussion</span> dans la collection: <a [routerLink]="['/collection',{type:collection}]" >{{collection}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <form class="form-horizontal" (ngSubmit)="onAddDiscussionSubmit()" [formGroup]="myFormGroup">
+          <div class="infoRequired">Les champs marqués d'un astérisque sont requis.
+          </div>
+          <hr/>
+      
+
+          <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">
+              <!-- popover -->
+              <div>
+                <popover-content #myPopover
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Titre</b> 
+                    <p>Titre de l'objet. Le titre doit être court mais descriptif.</p><p>Il peut contenir des espaces et des signes de ponctuations.</p>
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover"  popoverPlacement="right"></span> Titre  <span class="asterisque" [hidden]="myFormGroup.controls.title.valid">*</span>
+              </div>
+              <!-- end popover -->
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="title" formControlName="title">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="summary" class="col-sm-2 control-label">
+              <!-- popover -->
+              <div>
+                <popover-content #myPopover2
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Sommaire</b> 
+                    <p>Courte description de l'objet.</p>
+                    <p> Le sommaire apparaît sous le titre de l'objet</p>                  
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover2"  popoverPlacement="right"></span> Sommaire
+              </div>
+              <!-- end popover -->
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="summary" formControlName="summary">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">
+              <!-- popover -->
+                <div>
+                  <popover-content #myPopover3
+                    title="Aide"
+                    [closeOnClickOutside]="true">
+                    <div class="popOverStyle">
+                      <b>Description</b> 
+                      <p>Description détaillée de l'objet.</p>
+                      <p>Dans le cas des contenants, la description apparaît sous le titre.</p> 
+                    </div>
+                  </popover-content>
+                  <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover3"  popoverPlacement="right"></span> Description
+                </div>
+                <!-- end popover -->
+            </label>
+            <div class="col-sm-10">
+              <textarea  class="form-control" formControlName="description" id="description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+             <label for="expirationDate" class="col-sm-2 control-label">
+              <!-- popover -->
+              <div>
+                <popover-content #myPopover4
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Expiration des sujets après</b> 
+                    <p>Durée de conservation des sujets dans la discussion</p><p>Lorsqu'un sujet est plus ancien que la durée spécifié, il n'apparaît plus dans la discussion.</p><p>Les sujets périmmés peuvent être visualisés et supprimés de manière individuelle.</p>
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover4"  popoverPlacement="right"></span> Expiration des sujets après  
+              </div>
+              <!-- end popover -->
+            </label>
+            <div class="col-sm-8">
+            <select class="form-control" id="expirationDate" formControlName="expirationDate">
+              <option *ngFor="let item of selectExpiration" [value]="item">{{item}}</option>
+              
+            </select>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <div class="col-sm-2 control-label mockLabel">
+             <!-- popover -->
+              <div>
+                <popover-content #myPopover5
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Droits d'accès initiaux</b> 
+                    <p>Droits d’accès attribués au nouvel objet :</p>
+                    <ul>
+                        <li><b>Identiques au contenant:</b>  Attribue à l’objet les droits d’accès du contenant.</li>
+                      <li><b>Identiques au contenant sauf droits Rédacteur réservés au propriétaire:</b>  Attribue les droits de Lecteur aux utilisateurs qui ont ces droits sur le contenant. Vous êtes le seul utilisateur disposant des droits d’accès Rédacteur à l’objet.</li>
+                      <li><b>Réservés au propriétaire:</b> Attribue les droits d’accès complets uniquement à vous, le propriétaire de l’objet. </li>
+                    </ul>
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover5"  popoverPlacement="right"></span> Droits d'accès initiaux              
+              </div>
+              <!-- end popover -->
+            </div>
+            <div class="col-sm-10">
+              <div class="radio">
+                 <label class="radio"><input type="radio"   value="same" formControlName="accessRights"><span class="outer"><span class="inner"></span></span>Identiques au contenant</label>
+              </div>
+              <div class="radio">
+                 <label class="radio"><input  type="radio"  value="different"  formControlName="accessRights"  ><span class="outer"><span class="inner"></span></span>Identiques au contenant sauf droits Rédacteur réservés au propriétaire</label>
+              </div>
+              <div class="radio">
+                 <label class="radio"><input   type="radio" value="owner" formControlName="accessRights" ><span class="outer"><span class="inner"></span></span>Réserver au propriétaire</label>
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button [disabled]="!myFormGroup.valid" class="btn btn-info btn-lg">Valider</button>
+            </div>
+          </div>
+        </form>
+    </div>
+ </div>
+</div>
+
+<div>{{ myFormGroup.value | json }}</div>
+
+<div>{{ myFormGroup.status}}</div>
