@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LocalStorage} from 'ng2-webstorage'
+import {LocalStorage,SessionStorage} from 'ng2-webstorage'
 
 @Injectable()
 export class WebStorageService {
@@ -8,6 +8,11 @@ export class WebStorageService {
       @LocalStorage() public authid;
          @LocalStorage() public password;
             @LocalStorage() public rememberMe;
+
+    @SessionStorage() public fileName;
+       @SessionStorage() public fileDate;
+          @SessionStorage() public fileSize;
+             @SessionStorage() public fileType;
 
    constructor() {}
 }

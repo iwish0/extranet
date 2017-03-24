@@ -31,11 +31,11 @@
             </div>
             <div class="col-sm-10">
               <label for="file" id="inputFileButton">Votre fichier</label>
-              <input id="file" type="file" formControlName="file" class="inputfile form-control"><span id="fileName">{{formGroupDocument.value.file}}</span>
+              <input id="file" type="file" formControlName="file" class="inputfile form-control" #fileInput><span id="fileName">{{formGroupDocument.value.file}}</span>
             </div>
           </div>
-
-
+       <!--   <input id="file" type="file" formControlName="file" class="inputfile form-control" (change)="onChange($event)" #fileInput><span id="fileName">
+ -->
 
           <div class="form-group">
             <label for="title" class="col-sm-2 control-label">
@@ -170,7 +170,7 @@
           
           
            <div class="form-group">
-            <label for="auteur" class="col-sm-2 control-label">
+            <label for="author" class="col-sm-2 control-label">
               <!-- popover -->
                 <div>
                   <popover-content #myPopover8
@@ -187,7 +187,7 @@
                 <!-- end popover -->
             </label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" formControlName="auteur" id="auteur" />
+              <input type="text" class="form-control" formControlName="author" id="author" />
             </div>
           </div>
 

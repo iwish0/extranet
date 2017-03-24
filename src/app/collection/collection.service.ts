@@ -1,7 +1,9 @@
 import{Injectable} from '@angular/core';
-import{Http,Response,Headers,RequestOptions} from '@angular/http';
+import{Http,Response,Headers,RequestOptions,ResponseContentType} from '@angular/http';
 import{FormGroup} from '@angular/forms';
 import{Collection} from './collection';
+import{SoapEnvelopeService} from './soap-envelope-service';
+
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -10,20 +12,38 @@ import 'rxjs/add/operator/map';
 import {Parser} from 'xml2js';
 import * as xml2js from 'xml2js';
 
-
 @Injectable()
 export class CollectionService{
 	
 	private res:Response;
+
 	private url:string='http://www.dneonline.com/calculator.asmx';
 	private getCollection:string='http://swapi.co/api/people/';
+	private urlSave:string='http://localhost:4200/src/app/test.mp4';
+	  private url6:string='http://localhost:4200/src/app/skype_icon.png';
 	
-	constructor(private http:Http){}
+	constructor(private http:Http,private _soap:SoapEnvelopeService){}
 
-	addDocument(formco:FormGroup){
-		console.log(formco);
-
+	addDocument(collection,file,title,summary,description,keywords,expirationDate,versionsMax,author,accessRights,circulation){
+		let se=this._soap.addDocument(collection,file,title,summary,description,keywords,expirationDate,versionsMax,author,accessRights,circulation);
+		return this.http.post('http://localhost:4200/src/app',se);
 	}
+
+// 	addDocument(myForm:FormGroup,arg){
+// 		let formData=new FormData();
+// 		formData.append("data",JSON.stringify(myForm.value));
+// 		formData.append("file",arg);
+// 		// console.log("test");
+// 		// console.log(arg);
+// 		// console.log(arg2);
+// 		// console.log(arg3);
+// 		console.log(myForm.value);
+// 		return this.http.post("http://localhost:4200/src/app",formData);
+// // 		var builder = new xml2js.Builder();
+// // var xml = builder.buildObject(form);
+// // console.log(xml);
+
+// 	}
 
 	getData (): Observable<Collection[]> {
   		return this.http.get(this.getCollection,{headers: this.getHeaders()})
@@ -37,23 +57,24 @@ export class CollectionService{
     	return headers;
   	}
 
-	getXmlBySoap():Observable<number>{
-        let headers = new Headers({ 'Content-Type': 'application/soap+xml; charset=utf-8','Access-Control-Allow-Origin':'*' });
+  	// downloadPDF(): any {
+   //      return this.http.get(this.urlSave, { responseType: ResponseContentType.Blob })
+   //      .map(res => {
+   //          var blob= new Blob([res.blob()],{ type: 'video/mp4'})
+   //          console.log(blob);
+   //          return blob;
+   //      })
+  	// }
+ 
+ 	getAddOperation(arg,arg2):Observable<number>{
+ 		let soap=this._soap.add(arg,arg2);
+ 		// console.log(sr);
+        let headers = new Headers({ 'Content-Type': 'application/soap+xml; charset=utf-8'});
     	let options = new RequestOptions({ headers: headers });
-		return this.http.post(this.url,this.sr,options)
+		return this.http.post('http://localhost:4200/src/app/',soap,options)
         	.map(this.extractData2)
-        	.catch(this.handleError);;              
+        	.catch(this.handleError);            
   } 
-
-  sr=`<?xml version="1.0" encoding="utf-8"?>
-	<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-	  <soap12:Body>
-	    <Add xmlns="http://tempuri.org/">
-	      <intA>2</intA>
-	      <intB>8</intB>
-	    </Add>
-	  </soap12:Body>
-	</soap12:Envelope>`;
 
 	private extractData2(res: Response) {
     	var parser = new Parser({explicitRoot:false,explicitArray : false, ignoreAttrs : true});
@@ -84,4 +105,13 @@ export class CollectionService{
 	    console.error(errMsg);
 	    return Observable.throw(errMsg);
   	}
+
+
+  	upload(fileToUpload: any) {
+    let input = new FormData();
+    input.append("file", fileToUpload);
+    console.log(input);
+     return this.http
+         .post("http://localhost:4200/src/app", input);
+	}
 }

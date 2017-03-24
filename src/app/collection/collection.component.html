@@ -65,7 +65,23 @@
 	</div>
 </div>
 
+
 <div class="container-fluid" id="third-container">
+	<div class="row">
+		<table class="table table-hover">
+			<tr>
+				<th>Nom</th>
+				<th> Taille</th>
+				<th >Dernière modification</th>
+				<th>Type</th>
+			</tr>  
+			<tr>
+				<td>{{this.webstorage.fileName}}</td>
+			<td>{{this.webstorage.fileSize/1000}} ko</td>
+			<td>{{this.webstorage.fileDate |date:'dd/MM/yyyy'}}</td>
+			<td>{{this.webstorage.fileType}}</td>
+		</table>
+	</div>
 	<div class="row">
 		<div class="text-center" style="margin-top:150px;">
 			Aucune collection pour le moment!

@@ -12,6 +12,9 @@ import{AddDocumentFormComponent} from './add-document-form.component';
 import{AddDiscussionFormComponent} from './add-discussion-form.component';
 
 import{CollectionService} from './collection.service';
+import{SoapEnvelopeService} from './soap-envelope-service';
+
+
 
 import{CollectionRoutingModule} from './collection-routing.module';
 
@@ -31,7 +34,7 @@ import{CollectionRoutingModule} from './collection-routing.module';
      PopoverModule,
      MyDatePickerModule
    ],
-   providers:[CollectionService]
+   providers:[CollectionService,SoapEnvelopeService]
 
  })
  

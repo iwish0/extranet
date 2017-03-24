@@ -4,6 +4,10 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import{CollectionService} from './collection.service';
 import{Collection} from './collection';
 
+import {WebStorageService} from "../web-storage.service";
+
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
@@ -12,7 +16,9 @@ import{Collection} from './collection';
 
 export class CollectionComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private collectionService:CollectionService) { }
+  constructor(private webstorage:WebStorageService,private activatedRoute: ActivatedRoute, private collectionService:CollectionService) { }
+
+
 
   type:string;
   subMenu1:boolean=false;
@@ -28,7 +34,8 @@ export class CollectionComponent implements OnInit {
       });
 
       this.getWSRest();
-      this.getWSSoap();
+      // this.getWSSoap(38,9);
+     // this.getFile();
   }
 
   getWSRest() {
@@ -40,15 +47,27 @@ export class CollectionComponent implements OnInit {
                 console.log(this.errorMessage);
   }
 
-  getWSSoap(){
-    this.collectionService.getXmlBySoap()
-               .subscribe(
-                  result=> this.addition=result,
-                  error =>  this.errorMessage = <any>error
-                );
-               console.log(this.errorMessage);
-  }
+  // getWSSoap(arg,arg2){
+  //   this.collectionService.getAddOperation(arg,arg2)
+  //              .subscribe(
+  //                 result=> this.addition=result,
+  //                 error =>  this.errorMessage = <any>error
+  //               );
+  //              console.log(this.errorMessage);
+  // }
 
+  // getFile(){
+  // this.collectionService.downloadPDF().subscribe(
+  //       res => {
+  //           console.log(res + "reponse !!!");
+  //           FileSaver.saveAs(res, "ang.mp4"); //if you want to save it - you need file-saver for this : https://www.npmjs.com/package/file-saver
+
+  //       var fileURL = URL.createObjectURL(res);
+  //       window.open(fileURL); // if you want to open it in new tab
+
+  //       }
+  //   );
+  //  }
   onClickSubMenu(){
   	this.subMenu1=!this.subMenu1;
 

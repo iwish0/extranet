@@ -71,9 +71,9 @@
 }
 #third-container>.row{
 	height: 500px;
-	border-left: 15px solid #EDEFF1;
-	border-right: 15px solid #EDEFF1;
-	border-bottom: 15px solid #EDEFF1;
+	border-left: 20px solid #EDEFF1;
+	border-right: 20px solid #EDEFF1;
+	border-bottom: 20px solid #EDEFF1;
 }
 #dropdownModification{
 	position:absolute;
@@ -84,4 +84,7 @@
 	position:absolute;
 	left:190px;
 	margin-top:7px;
+}
+table>tr>th{
+
 }
