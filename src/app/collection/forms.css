@@ -27,11 +27,6 @@ label{
 	color:#798081;  /*#95A0A7*/
 	font-weight: bold;
 }
-.infoRequired{
-	color:#00b1ca;
-	font-size:15px;
-	font-weight: 700;
-}
 .popOverStyle{
 	width:200px; 
 	word-wrap: break-word; 
@@ -64,10 +59,7 @@ label{
 	letter-spacing: 1px;
 	font-weight: bold;
 }
-.asterisque{
-	color:#00b1ca;
-	font-size:16px;
-}
+
 
 
 @-webkit-keyframes 

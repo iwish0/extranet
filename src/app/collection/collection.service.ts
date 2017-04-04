@@ -16,6 +16,7 @@ import * as xml2js from 'xml2js';
 export class CollectionService{
 	
 	private res:Response;
+  public viewer:string='viewer';
 
 	private url:string='http://www.dneonline.com/calculator.asmx';
 	private getCollection:string='http://swapi.co/api/people/';
@@ -24,26 +25,23 @@ export class CollectionService{
 	
 	constructor(private http:Http,private _soap:SoapEnvelopeService){}
 
-	addDocument(collection,file,title,summary,description,keywords,expirationDate,versionsMax,author,accessRights,circulation){
-		let se=this._soap.addDocument(collection,file,title,summary,description,keywords,expirationDate,versionsMax,author,accessRights,circulation);
-		return this.http.post('http://localhost:4200/src/app',se);
-	}
+	 addDocument(collection,file,title,summary,description,keywords,expirationDate,versionsMax,author,accessRights,circulation){
+	 	let se=this._soap.addDocument(collection,file,title,summary,description,keywords,expirationDate,versionsMax,author,accessRights,circulation);
+	 	return this.http.post('http://localhost:4200/src/app',se);
+	 }
 
-// 	addDocument(myForm:FormGroup,arg){
-// 		let formData=new FormData();
-// 		formData.append("data",JSON.stringify(myForm.value));
-// 		formData.append("file",arg);
-// 		// console.log("test");
-// 		// console.log(arg);
-// 		// console.log(arg2);
-// 		// console.log(arg3);
-// 		console.log(myForm.value);
-// 		return this.http.post("http://localhost:4200/src/app",formData);
-// // 		var builder = new xml2js.Builder();
+	// addDocument(myForm:FormGroup,arg){
+ // 		let formData=new FormData();
+ // 		formData.append("data",JSON.stringify(myForm.value));
+ // 		formData.append("file",arg);
+ // 	  console.log(arg);
+ // 		console.log(myForm.value);
+ // 		return this.http.post("http://localhost:4200/src/app",formData);
+ // 		var builder = new xml2js.Builder();
 // // var xml = builder.buildObject(form);
 // // console.log(xml);
 
-// 	}
+//	}
 
 	getData (): Observable<Collection[]> {
   		return this.http.get(this.getCollection,{headers: this.getHeaders()})

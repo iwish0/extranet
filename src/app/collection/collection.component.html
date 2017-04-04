@@ -41,7 +41,7 @@
 		  	</button>
 		  	<ul class="dropdown-menu" aria-labelledby="addList">
 		    	<li *ngFor="let item of addList">
-		    		<a [routerLink]="item.url" [queryParams]="{collection:type}">{{item.name}}</a>
+		    		<a [routerLink]="item.url" [queryParams]="{collection:type,object:item.name}">{{item.name | capitalizeFirst }}</a>
 		    	</li>
 		  	</ul>
 		</div>

@@ -6,6 +6,7 @@ import { AuthGuard }            from '../login/auth-guard.service';
 import { CollectionComponent }       from './collection.component';
 import { AddDocumentFormComponent }       from './add-document-form.component';
 import { AddDiscussionFormComponent }       from './add-discussion-form.component';
+import { AddCustomizedContentFormComponent }       from './add-customized-content-form.component';
 
 
 const CollectionRoutes: Routes = [
@@ -18,6 +19,8 @@ const CollectionRoutes: Routes = [
   			path:'add-document',component:AddDocumentFormComponent
   		},{
         path:'add-discussion',component:AddDiscussionFormComponent
+      },{
+        path:'add-customized-content',component:AddCustomizedContentFormComponent
       }
 
   	]

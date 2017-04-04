@@ -33,4 +33,12 @@ div.dropdown>.btn-default.dropdown-toggle:active{
 	background-color:#00bfff ;
     border-color:#00bfff ;
 }
-
+.asterisque{
+	color:#00b1ca;
+	font-size:17px;
+}
+.infoRequired{
+	color:#00b1ca;
+	font-size:15px;
+	font-weight: 700;
+}

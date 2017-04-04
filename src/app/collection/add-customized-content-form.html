@@ -1,0 +1,57 @@
+<div class="container-fluid" id="mainContainerForm">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Ajout: <span class="bold">{{ formObject | capitalizeFirst}}</span> dans la collection: <a [routerLink]="['/collection',{type:collection}]" >{{collection}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <dynamic-form [questions]="questions"></dynamic-form>
+     <!--  <form class="form-horizontal" (ngSubmit)="onSubmit()" [formGroup]="myForm">
+          <div class="infoRequired">Les champs marqués d'un astérisque sont requis.
+          </div>
+          <hr/>
+      
+           <div class="form-group">
+            <div class="col-sm-2 control-label mockLabel">
+        
+              <div>
+                <popover-content #myPopover7
+                  title="Aide" 
+                  [closeOnClickOutside]="true">
+                  <div class="popOverStyle">
+                    <b>Fichier</b> 
+                    <p>Document que vous désirez télécharger. Vous pouvez cliquer sur le bouton "Votre fichier" pour  sélectionner le document.</p>
+                  </div>
+                </popover-content>
+                <span class="glyphicon glyphicon-question-sign help" [popover]="myPopover7"  popoverPlacement="right"></span> Fichier <span class="asterisque" [hidden]="myForm.controls.file.valid">*</span>
+              </div>
+            
+            </div>
+            <div class="col-sm-10">
+              <label for="file" id="inputFileButton">Votre fichier</label>
+              <input id="file" type="file" formControlName="file" class="inputfile form-control" #fileInput><span id="fileName">{{myForm.value.file}}</span>
+            </div>
+          </div>
+         
+
+           
+           <div  *ngFor="let input of inputs" [innerHtml]="input | sanitizeHtml"></div>
+          
+
+
+
+
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button [disabled]="!myForm.valid" class="btn btn-info btn-lg">Valider</button>
+            </div>
+          </div>
+        </form> -->
+
+    </div>
+ </div>
+</div>

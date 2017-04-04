@@ -134,8 +134,22 @@
 
 <router-outlet></router-outlet>
 
-<footer class="text-center">
+<!-- <footer class="text-center">
  <ul class="list-inline">
   <li>Copyright© 2017 Xenon-it | Tous droits réservés</li>
 </ul>
+</footer> -->
+
+<footer class="container-fluid">
+  <div class="row text-center">
+    <div [class.col-sm-4]="webstorage.isLoggedIn" *ngIf="webstorage.isLoggedIn">
+      <a routerLink="/admin">Accès Accueil Espace Administateur</a>
+    </div>
+    <div [class.col-sm-12]="!webstorage.isLoggedIn" [class.col-sm-4]="webstorage.isLoggedIn">
+      Copyright© 2017 Xenon-it | Tous droits réservés
+    </div>
+    <div [class.col-sm-4]="webstorage.isLoggedIn"  *ngIf="webstorage.isLoggedIn">
+      A propos de DocuShare
+    </div>
+  </div>
 </footer>

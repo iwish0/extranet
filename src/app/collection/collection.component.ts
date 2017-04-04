@@ -5,8 +5,9 @@ import{CollectionService} from './collection.service';
 import{Collection} from './collection';
 
 import {WebStorageService} from "../web-storage.service";
-
+import{ObjectBuilderService} from '../admin/object-builder.service';
 import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-collection',
@@ -16,7 +17,7 @@ import * as FileSaver from 'file-saver';
 
 export class CollectionComponent implements OnInit {
 
-  constructor(private webstorage:WebStorageService,private activatedRoute: ActivatedRoute, private collectionService:CollectionService) { }
+  constructor(private _obs:ObjectBuilderService,private webstorage:WebStorageService,private activatedRoute: ActivatedRoute, private collectionService:CollectionService) { }
 
 
 
@@ -25,13 +26,15 @@ export class CollectionComponent implements OnInit {
   private errorMessage:string;
   private collections:Collection[];
   private addition:number;
-
+  private addList;
   ngOnInit() {
   	// subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
         this.type = params['type'];
         console.log(this.type+ "sfsfd");
       });
+
+    this.addList=this._obs.getListOfObjectsAndUrls();
 
       this.getWSRest();
       // this.getWSSoap(38,9);
@@ -83,31 +86,6 @@ export class CollectionComponent implements OnInit {
     'Supprimer',
     'Renommer',
     'Zip et téléchargement'
-  ];
-
-  addList=[
-    {
-      name:'Blogue Web',
-       url:''
-     },{
-       name:'Calendrier',
-        url:''
-     },{
-       name: 'Collection',
-       url:''
-     },{
-       name: 'Discussion',
-        url:'/collection/add-discussion'
-     },{
-       name:  'Document',
-        url:'/collection/add-document'
-     },{
-       name:'URL',
-        url:''
-     },{
-       name:  'Wiki',
-        url:''
-     }
   ];
 
 }

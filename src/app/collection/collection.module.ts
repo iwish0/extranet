@@ -10,10 +10,18 @@ import { MyDatePickerModule } from 'mydatepicker';
 import{CollectionComponent} from './collection.component';
 import{AddDocumentFormComponent} from './add-document-form.component';
 import{AddDiscussionFormComponent} from './add-discussion-form.component';
+import { AddCustomizedContentFormComponent }  from './add-customized-content-form.component';
+import { DynamicFormComponent }  from './dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent }  from './dynamic-form/dynamic-form-question.component';
+
+
+
+import { PipeModule } from '../pipe/pipe.module'; 
 
 import{CollectionService} from './collection.service';
 import{SoapEnvelopeService} from './soap-envelope-service';
-
+import { QuestionService }  from './dynamic-form/question.service';
+import { QuestionControlService }  from './dynamic-form/question-control.service';
 
 
 import{CollectionRoutingModule} from './collection-routing.module';
@@ -22,7 +30,11 @@ import{CollectionRoutingModule} from './collection-routing.module';
    declarations: [
      CollectionComponent,
      AddDocumentFormComponent,
-     AddDiscussionFormComponent
+     AddDiscussionFormComponent,
+     AddCustomizedContentFormComponent,
+     DynamicFormComponent ,
+     DynamicFormQuestionComponent
+
    ],
    imports: [
      FormsModule,
@@ -32,9 +44,10 @@ import{CollectionRoutingModule} from './collection-routing.module';
      CollectionRoutingModule,
      ReactiveFormsModule,
      PopoverModule,
-     MyDatePickerModule
+     MyDatePickerModule,
+     PipeModule
    ],
-   providers:[CollectionService,SoapEnvelopeService]
+   providers:[CollectionService,SoapEnvelopeService,QuestionService,QuestionControlService]
 
  })
  

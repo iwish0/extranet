@@ -271,7 +271,7 @@
  </div>
 </div>
 
-
+<iframe *ngIf="url" width="560" height="315" [src]="urlVideo" frameborder="0" allowfullscreen></iframe>
+<iframe *ngIf="url2" width="560" height="315" [src]="urlDocument" frameborder="0" allowfullscreen></iframe>
 <div>{{ formGroupDocument.value | json }}</div>
-
 <div>{{ formGroupDocument.status}}</div>

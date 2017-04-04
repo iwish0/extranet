@@ -1,0 +1,66 @@
+<!-- to delete -->
+<div id="routerBlock">
+  <div>
+    <h3 class="h4">Création d'un objet personnalisé</h3>
+    <div>
+        <ul class="list-unstyled">
+          <li>Le nom de l'objet correspond au type attendu (exemple: bilan,compte de résultat, facture fournisseur...)</li>
+          <li>Les étiquettes correspondent aux propriétés de l'objet.</li>
+        </ul>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+
+       <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+        <div class="form-group">
+          <label for="objectName">Nom de l'objet</label> <span class="asterisque" [hidden]="myForm.controls.name.valid">*</span>
+          <input type="text" class="form-control" formControlName="name" id="objectName">
+         
+        </div>
+       
+    
+        <div formArrayName="properties">
+          <div *ngFor="let property of myForm.controls.properties.controls; let i=index" class="panel panel-default">
+            <div class="panel-heading">
+              <span>Étiquette {{i + 1}}</span>
+              <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.properties.controls.length > 1" (click)="removeProperty(i)"></span>
+            </div>
+            <div class="panel-body" [formGroupName]="i">
+              <div class="form-group col-xs-6">
+                <label>Nom de l'étiquette</label> <span class="asterisque" [hidden]="myForm.controls.properties.controls[i].controls.name.valid">*</span>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+              <div class="form-group col-xs-6">
+                <label>Type</label> <span class="asterisque" [hidden]="myForm.controls.name.valid">*</span>
+                <select  class="form-control" formControlName="type">
+                  <option value="string">text</option>
+                  <option value="boolean">booléen</option>
+                </select>
+               <!--  <input type="text" class="form-control" formControlName="type"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="margin-20">
+          <a (click)="addProperty()" style="cursor: pointer;">
+            Ajouter une étiquette +
+          </a>
+        </div>
+
+        <div class="margin-20">
+          <button type="submit" class="btn btn-info pull-right" [disabled]="!myForm.valid">Submit</button>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="margin-20">
+          <div>myForm details:-</div>
+          <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+          <pre>form value: <br>{{myForm.value | json}}</pre>
+        </div> 
+      </form>
+      </div>
+    </div>
+<!--  </div> -->  
+<!-- </div> -->
+</div>

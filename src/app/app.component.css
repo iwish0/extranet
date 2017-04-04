@@ -26,3 +26,6 @@
 .searchMenuLink:focus{
 		background-color: #edeff1;
 }
+footer,footer a{
+	color:#99A1A7;
+}

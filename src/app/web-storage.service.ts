@@ -14,5 +14,7 @@ export class WebStorageService {
           @SessionStorage() public fileSize;
              @SessionStorage() public fileType;
 
+     @SessionStorage() public object;
+
    constructor() {}
 }

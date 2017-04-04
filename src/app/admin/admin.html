@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			
+			<div class="row">
+				<div class="col-sm-2 test" id="menu">
+					<h3 class="h5">Menu Administration</h3>
+					<h4 class="h5"  (click)="onDisplayObject(1)">Objets de base</h4>
+					<ul class="list-unstyled" *ngIf="displayObject">
+						<li *ngFor="let basicObject of basicObjects">
+							<span class="glyphicon glyphicon-file"></span><a href="#">{{basicObject}}</a>
+						</li>
+					</ul>
+					<div id="make-inline"><h4 class="h5" (click)="onDisplayObject(2)">Objets personnalisés</h4> <span><a (click)="hide()"  class="btn btn-info btn-xs">Créer</a></span></div>
+					<ul class="list-unstyled" *ngIf="displayObject2">
+						<li *ngFor="let customizedObject of customizedObjects">
+							<span class="glyphicon glyphicon-file"></span><a (click)="onSelect(customizedObject)">{{customizedObject[0].value}}</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-10">
+					<object-details [object]="selectedObject"></object-details>
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+<div>
